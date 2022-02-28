@@ -20,6 +20,14 @@
         <repackage.classifier>exec</repackage.classifier>
     </properties>
 
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/multi-function-project/base-function</url>
+        </repository>
+    </distributionManagement>
+
     <repositories>
         <repository>
             <id>github</id>
