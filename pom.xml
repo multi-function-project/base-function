@@ -14,9 +14,10 @@
     <packaging>pom</packaging>
 
     <properties>
-        <spring-cloud.version>2021.0.0</spring-cloud.version>
+        <spring-cloud-function.version>3.2.2</spring-cloud-function.version>
         <spring-native.version>0.11.2</spring-native.version>
         <spring-boot.version>2.6.3</spring-boot.version>
+        <graalvm.version>0.9.10</graalvm.version>
         <repackage.classifier>exec</repackage.classifier>
     </properties>
 
@@ -57,21 +58,23 @@
 
     <dependencyManagement>
         <dependencies>
-            <!-- TODO:baseのspring-boot-starter-parentでなくこちらを有効にしたい -->
-            <!-- <dependency>
-                <groupId>orgspringframework.boot</groupId>
+            <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-dependencies -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
                 <version>${spring-boot.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
-            </dependency> -->
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-function-dependencies -->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
-                <artifactId>spring-cloud-dependencies</artifactId>
-                <version>${spring-cloud.version}</version>
+                <artifactId>spring-cloud-function-dependencies</artifactId>
+                <version>${spring-cloud-function.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <!-- https://mvnrepository.com/artifact/org.springframework.experimental/spring-native-configuration -->
             <dependency>
                 <groupId>org.springframework.experimental</groupId>
                 <artifactId>spring-native</artifactId>
@@ -120,7 +123,12 @@
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
         </dependency>
-
+        <dependency>
+            <groupId>org.graalvm.buildtools</groupId>
+            <artifactId>junit-platform-native</artifactId>
+            <version>${graalvm.version}</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
 </project>
